@@ -19,6 +19,7 @@ const Form = () => {
             return;
         }
         setTodos([...todos,todo])
+
     }
 
     const deleteTodo=indice=>{
