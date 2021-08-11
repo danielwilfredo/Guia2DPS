@@ -1,11 +1,16 @@
 import React from 'react';
 
-const Compras = () => {
+const Compras = ({compras, index, deleteCompra}) => {
     return (
 
         <>
-
-        <p>Compras hechas</p>
+        <div className="list">
+            <h3>{}</h3>
+            <button className="btn-delete"
+            onClick={()=>deleteCompra(index)}
+            >X
+            </button>
+        </div>
         </>
 
 
