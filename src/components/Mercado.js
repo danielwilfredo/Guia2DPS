@@ -8,6 +8,8 @@ const Mercado = () => {
     const [cantidad, setCantidad]=useState(0);
     //state de ayuda
     const [lista, setLista]=useState({});
+    const [listas, setListas]=([]);
+
 
 
 //cuando el usuario agrega un gasto
@@ -25,9 +27,8 @@ const agregarGasto = (e) => {
       cantidad, compra
     }
     
-    setLista(
-    listaCompra
-    )
+    setListas([...listas, listaCompra
+    ])
     //resetear el form
     setCompra('');
     setCantidad(0);
@@ -68,8 +69,8 @@ const agregarGasto = (e) => {
         />
     </form>
    
-    {
-       <Compras lista={lista} deleteCompra={deleteCompra}/>
+    {     
+        // listas.map((value, index)=>(<Compras listas={value.listas} key={index} index={index} deleteCompra={deleteCompra}/>))
     } 
 </>
   );
