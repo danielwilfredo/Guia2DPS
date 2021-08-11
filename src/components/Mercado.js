@@ -4,13 +4,11 @@ import Compras from "./Compras"
 const Mercado = () => {
 
     //creando el state
-    const [compra, setCompra]=useState({});
-    const [cantidad, setCantidad]=useState({});
-
-
+    const [compra, setCompra]=useState('');
+    const [cantidad, setCantidad]=useState(0);
     //state de ayuda
-    const [compras, setCompras]=useState({});
-    const [cantidades, setCantidades]=useState({});
+    const [lista, setLista]=useState({});
+
 
 //cuando el usuario agrega un gasto
 const agregarGasto = (e) => {
@@ -22,23 +20,25 @@ const agregarGasto = (e) => {
       return;
     }
 
-    setCompras([...compras, compra]);
-    setCantidades([...cantidades, cantidad])
+    //armar la lista
+    const listaCompra = {
+      cantidad, compra
+    }
     
+    setLista(
+    listaCompra
+    )
     //resetear el form
     setCompra('');
     setCantidad(0);
 
   };
 
+  const deleteCompra= indice=>{
+    console.log("Eliminar Compra")
+  }
 
-  
-  const deleteCompra=indice=>{
-    const newTodos=[...compras];
-    newTodos.splice(indice,1);
-    setCompras(newTodos);
 
-}
 
   return (
 <>
@@ -69,7 +69,7 @@ const agregarGasto = (e) => {
     </form>
    
     {
-       //   compras.map((value, index)=>(<Compras compras={value.compras} key={index} index={index} deleteCompra={deleteCompra}/>))
+       <Compras lista={lista} deleteCompra={deleteCompra}/>
     } 
 </>
   );
