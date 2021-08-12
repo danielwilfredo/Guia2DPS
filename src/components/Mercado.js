@@ -4,11 +4,11 @@ import Compras from "./Compras"
 const Mercado = () => {
 
     //creando el state
-    const [compra, setCompra]=useState('');
+    const [producto, setProducto]=useState('');
     const [cantidad, setCantidad]=useState(0);
     //state de ayuda
-    const [lista, setLista]=useState({});
-    const [listas, setListas]=([]);
+    const [lista, setLista]=useState([]);
+
 
 
 
@@ -17,20 +17,25 @@ const agregarGasto = (e) => {
     e.preventDefault();
 
     //validar
-    if (cantidad < 1 || isNaN(cantidad) || compra.trim() === "") {
+    if (cantidad < 1 || isNaN(cantidad) || producto.trim() === "") {
      alert("No deje cajas de texto vacias")
       return;
     }
 
     //armar la lista
     const listaCompra = {
-      cantidad, compra
+      cantidad, producto
     }
+
+    let listaAyuda =[...lista];
+    listaAyuda.push(listaCompra);
+
+    //set la lista
+    setLista(listaAyuda);
     
-    setListas([...listas, listaCompra
-    ])
+ 
     //resetear el form
-    setCompra('');
+    setProducto('');
     setCantidad(0);
 
   };
@@ -51,9 +56,9 @@ const agregarGasto = (e) => {
         <input
           type="text"
          placeholder="Ejemplo: Transporte"
-         name="compra"
-          value={compra}
-          onChange={(e) => setCompra(e.target.value)}
+         name="producto"
+          value={producto}
+          onChange={(e) => setProducto(e.target.value)}
         />
         <label>Cantidad gasto</label>
         <input
@@ -70,7 +75,7 @@ const agregarGasto = (e) => {
     </form>
    
     {     
-        // listas.map((value, index)=>(<Compras listas={value.listas} key={index} index={index} deleteCompra={deleteCompra}/>))
+         lista.map((value, index)=>(<Compras cantidad={value.cantidad} producto={value.producto} key={index} index={index} deleteCompra={deleteCompra}/>))
     } 
 </>
   );
