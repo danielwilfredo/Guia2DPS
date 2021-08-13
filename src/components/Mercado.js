@@ -41,7 +41,9 @@ const agregarGasto = (e) => {
   };
 
   const deleteCompra= indice=>{
-    console.log("Eliminar Compra")
+    const newTodos=[...lista];
+    newTodos.splice(indice,1);
+    setLista(newTodos);
   }
 
 
@@ -54,9 +56,10 @@ const agregarGasto = (e) => {
     
         <label>Nombre producto</label>
         <input
-          type="text"
+        type="text"
          placeholder="Ejemplo: Transporte"
          name="producto"
+         className="lista-compra"
           value={producto}
           onChange={(e) => setProducto(e.target.value)}
         />
@@ -65,10 +68,12 @@ const agregarGasto = (e) => {
           type="number"
           placeholder="Ejemplo: 300$"
           name="cantidad"
+          className="lista-compra"
           value={cantidad}
           onChange={(e) => setCantidad(parseInt(e.target.value, 10))}
         />
         <input
+        className="btn-comprar"
           type="submit"
           value="Agregar Gasto"
         />

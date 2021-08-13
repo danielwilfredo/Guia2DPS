@@ -5,8 +5,9 @@ const Compras = ({cantidad, producto, index, deleteCompra}) => {
 
         <>
         <div className="list">
-            <h3>{cantidad}</h3>
-            <h3>{producto}</h3>
+        <h3><span className="titulo">Nombre Producto:</span> {producto} </h3>  
+        <h3 className="espacio">  </h3>
+        <h3><span className="titulo">Cantidad:</span> {cantidad}</h3>
             <button className="btn-delete"
             onClick={()=>deleteCompra(index)}
             >X
